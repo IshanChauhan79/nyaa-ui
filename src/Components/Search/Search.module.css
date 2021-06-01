@@ -1,0 +1,36 @@
+.Input{
+    display: inline-block;
+    background-color:transparent;
+    padding:7px 10px;
+    font-size: 14px;
+    color:white;
+    width:170px;
+    border:0;
+    border: 1px solid #717171;
+    border-left: 0px;
+    border-bottom-right-radius:0.4rem; 
+    border-top-right-radius:0.4rem; 
+    /* border-radius: 0.4rem; */
+    transition: all 0.2s ease-in-out;
+    
+}
+.Input:focus{
+    outline:none;
+    background-color: black;
+    box-shadow:  0 0 10px 0px #717171;
+}
+.SearchSubmit{
+    display: inline-block;
+    border:0px solid #717171;
+    border-bottom-left-radius:0.4rem; 
+    border-top-left-radius:0.4rem; 
+    /* margin-right:5px; */
+    font-size: 16px;
+    padding:8px;
+    padding-bottom:10px;
+    /* background-image:url(https://developer.mozilla.org/static/media/search.db31d27c.svg); */
+    background-color: rgb(92, 170, 253);
+}
+.SearchSubmit:hover{
+    background-color: lightblue;
+}

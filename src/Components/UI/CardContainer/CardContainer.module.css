@@ -1,0 +1,35 @@
+.CardContainer {
+  display: flex;
+  justify-content: flex-start;
+  /* width: 60%; */
+  margin-left: 50px;
+  margin-right: 50px;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+}
+/* .QuickSearchKeys::-webkit-scrollbar{
+    outline: 1px solid slategrey;
+    background-color: white;
+} */
+
+/* width */
+.CardContainer::-webkit-scrollbar {
+  height: 7px;
+}
+
+/* Track */
+.CardContainer::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.CardContainer::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.CardContainer::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}

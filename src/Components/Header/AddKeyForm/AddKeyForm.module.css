@@ -1,0 +1,49 @@
+.AddKeyForm{
+    position: absolute;
+    width:100%;
+    height:100%;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.Form{
+    /* border:1px solid blue; */
+    padding:25px;
+    border-radius: 0.8rem;
+    background-color: #1a1a1b;
+    z-index:100;
+    
+}
+.AddInput{
+    display: block;
+    background-color: transparent;
+    width:200px;
+    padding:5px;
+    margin-bottom:20px ;
+    font-size:20px;
+    color:lightgrey;
+    border:0;
+    border-bottom: 1px solid blue;
+}
+.AddInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; 
+  }
+.AddInput:focus { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    outline: none;
+  }
+
+  .AddSource{
+      display: block;
+      margin:auto;
+      background-color: blue;
+      padding:8px;
+      color:lightgrey;
+      border: 0;
+      border-radius: 0.2rem;
+      font-size:18px;
+
+  }

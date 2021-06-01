@@ -1,0 +1,13 @@
+.AddKeyButton{
+    display: inline-block;
+    width: 9%; 
+}
+.AddKeyBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    color: #717171;
+    font-size: 18px;
+
+}

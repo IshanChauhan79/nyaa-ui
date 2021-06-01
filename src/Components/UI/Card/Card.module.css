@@ -1,0 +1,20 @@
+.Card {
+  padding: 7px;
+  border: 1px solid #717171;
+  background-color: #1a1a1b;
+  border-radius: 0.6rem;
+  margin: 10px 5px;
+  cursor: pointer;
+  display: flex;
+}
+.Clicked {
+  background-color: #717171;
+  box-shadow: 0 0 6px 0px #717171;
+}
+ .CardText {
+  white-space: nowrap 
+}
+/*
+.Delete {
+  display: inline-block;
+} */
