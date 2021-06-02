@@ -1,0 +1,7 @@
+.TorrentContainer {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  height: 1000px;
+  background-color:black ;
+}

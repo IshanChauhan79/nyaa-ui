@@ -1,0 +1,82 @@
+.TorrentCard {
+  margin: 10px;
+  padding: 10px;
+  width: 90%;
+  /* height: 200px; */
+  background-color: #1a1a1b;
+  border: 1px solid #38383a;
+  border-radius: 0.8rem;
+  font-size: 14px;
+}
+.TorrentData {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 0.4rem;
+}
+.TorrentData > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.TorrentData > div > div {
+  margin-left: 15px;
+}
+.TitleRowTrusted {
+  cursor:pointer;
+  color: rgb(92, 170, 253);
+  background-color: #36482f;
+}
+.TitleRow {
+  cursor:pointer;
+  color: rgb(92, 170, 253);
+  background-color: #474747;
+}
+
+.Title {
+  justify-content: left !important;
+  color: rgb(92, 170, 253);
+  flex-grow: 1;
+  word-break: break-all;
+}
+.Expand{
+  margin-left:10px;
+  color:white;
+}
+
+.Tip {
+  visibility: hidden;
+  /* width: 100px; */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;;
+  border-radius: 6px;
+  position: absolute;
+  top:-30px;
+  right:-10px;;
+  z-index: 1;
+}
+.Seeds{
+  margin-left:45px !important;
+ color:#069c40;
+ position: relative;
+}
+.Leechers{
+  color:#FF101E;
+  position: relative;
+}
+
+.Seeds:hover .Tip {
+  visibility: visible;
+}
+.Leechers:hover .Tip {
+  visibility: visible;
+}
+.Size{
+  color: rgb(92, 170, 253);
+}
+.InfoHash {
+  color:white;
+}

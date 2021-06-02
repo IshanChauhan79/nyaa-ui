@@ -1,5 +1,5 @@
 .Header {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   background-color: #1a1a1b;

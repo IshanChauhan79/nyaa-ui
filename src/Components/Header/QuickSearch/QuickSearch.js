@@ -6,7 +6,7 @@ import classes from "./QuickSearch.module.css";
 const QuickSearch = (props) => {
   const [sources, setSources] = useState([
     "Golumpa",
-    "Erai raws",
+    "Erai-raws",
     "SubsPlease",
     "Judas",
     "Anime",
