@@ -1,25 +1,33 @@
 .TorrentCard {
   margin: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   width: 90%;
   /* height: 200px; */
   background-color: #1a1a1b;
   border: 1px solid #38383a;
   border-radius: 0.8rem;
   font-size: 14px;
+  overflow:hidden;
 }
 .TorrentData {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  border-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+
+
+  /* border-radius: 0.4rem; */
 }
+
 .TorrentData > div {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 }
+
+
 .TorrentData > div > div {
   margin-left: 15px;
 }
@@ -40,10 +48,7 @@
   flex-grow: 1;
   word-break: break-all;
 }
-.Expand{
-  margin-left:10px;
-  color:white;
-}
+
 
 .Tip {
   visibility: hidden;
@@ -75,8 +80,12 @@
   visibility: visible;
 }
 .Size{
+  white-space: nowrap;
   color: rgb(92, 170, 253);
 }
 .InfoHash {
   color:white;
 }
+/* .Image{
+   height:px; 
+} */

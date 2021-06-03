@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import classes from "./TorrentCard.module.css";
+import dateTime from "../UI/getDate/getDate";
+import DownloadButton from "../UI/DownloadButton/DownloadButton";
+import ExpandButton from "../UI/ExpandButton/ExpandButton";
 
+import nyaaImg from "../../assests/images/nyaa.png";
 import c12 from "../../assests/images/category/1_2.png";
 import c13 from "../../assests/images/category/1_3.png";
 import c14 from "../../assests/images/category/1_4.png";
@@ -7,10 +12,10 @@ import c21 from "../../assests/images/category/2_1.png";
 import c31 from "../../assests/images/category/3_1.png";
 import c33 from "../../assests/images/category/3_3.png";
 
-import classes from "./TorrentCard.module.css";
 // magnet:?xt=urn:btih:6459bb5dc5e59eb28631eeb09d5965c17ee89822&dn=hello
 
 const TorrentCard = (props) => {
+  const [expandCard, setExpandCard] = useState(false);
   const title = props.data.title;
   const trusted = props.data["nyaa:trusted"][0];
   const download = props.data.link;
@@ -25,11 +30,14 @@ const TorrentCard = (props) => {
   const category = props.data["nyaa:category"][0];
   const infoHash = props.data["nyaa:infoHash"];
   const nyaaLink = props.data.guid[0]["_"];
+
   const titleRow = [
     classes.TorrentData,
     trusted === "Yes" ? classes.TitleRowTrusted : classes.TitleRow,
   ];
-  let imgSrc=null
+  const magnetLink = "magnet:?xt=urn:btih:" + infoHash;
+
+  let imgSrc = null;
   switch (categoryId) {
     case "1_2":
       imgSrc = c12;
@@ -53,26 +61,41 @@ const TorrentCard = (props) => {
       break;
   }
 
+  const expandRow = expandCard ? (
+    <div className={classes.TorrentData}>
+      <div className={classes.nyaaLink}>
+        <a href={nyaaLink} target="_blank" rel="noreferrer">
+          <img src={nyaaImg} alt="Nyaa" height="40px"  />{" "}
+        </a>
+      </div>
+      <div className={classes.Title}>InfoHash: {infoHash}</div>
+      <div className={classes.Category}>{category}</div>
+    </div>
+  ) : null;
+
+  const onExpandClickHandler = () => {
+    setExpandCard((prev) => !prev);
+  };
+
   return (
     <div className={classes.TorrentCard}>
       <div className={titleRow.join(" ")}>
-        <div className={classes.Image}>
-          <img src={imgSrc} alt=""></img>
+        <div>
+          <img src={imgSrc} alt="Anime" className={classes.Image}></img>
         </div>
         <div className={classes.Title}>{title}</div>
-        <div>
-          <i className="fas fa-download"></i>
-        </div>
-        <div>
-          <i className="fas fa-magnet"></i>
-        </div>
-        <div className={classes.Expand}>
-          <i className="fas fa-expand-alt"></i>
-        </div>
+        <DownloadButton src={download} type="torrentFile" />
+        <DownloadButton src={magnetLink} type="magnet" />
+        <ExpandButton
+          expand={expandCard}
+          onClickHandler={onExpandClickHandler}
+        />
       </div>
       <div className={classes.TorrentData}>
-        <div className={classes.Date}>{date} </div>
-        <div className={classes.downloads}>Downloads: {downloads} </div>
+        <div className={classes.Date}>{dateTime(date)} </div>
+        <div className={classes.downloads}>
+          <i className="fas fa-download"></i>&nbsp; {downloads}
+        </div>
 
         <div>
           <div className={classes.Size}>{size} </div>
@@ -86,23 +109,7 @@ const TorrentCard = (props) => {
           </div>
         </div>
       </div>
-      <div className={classes.TorrentData}>
-        <div className={classes.nyaaLink}>link </div>
-        <div className={classes.Title}>InfoHash: {infoHash}</div>
-        <div className={classes.Category}>{category}</div>
-      </div>
-      {/* 
-            title: {title}<br/>
-            download: {download}<br/>
-            nyaa link: {nyaaLink}<br/>
-            nyaa permanent: {isPermaLink}<br/>
-             date: {date}<br/>
-             seeds: {seeds}<br/>
-             leechers: {leechers}<br/>
-             downloads: {downloads}<br/>
-             infohash: {infoHash}<br/>
-             size: {size}<br/>
-             category: {category}<br/> */}
+      {expandRow}
     </div>
   );
 };

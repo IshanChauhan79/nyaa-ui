@@ -1,0 +1,9 @@
+.DownloadButton a{
+    text-decoration: none;
+    color:rgb(92, 170, 253);
+  }
+  
+  .DownloadButton a:visited, a:hover, a:active {
+    text-decoration: none;
+    color:rgb(54, 133, 218);
+  }

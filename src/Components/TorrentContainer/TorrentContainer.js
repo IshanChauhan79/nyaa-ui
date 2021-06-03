@@ -1,67 +1,34 @@
-import React from "react";
-import TorrentCard from "../TorrentCard/TorrentCard";
+import React,{useEffect,useState} from "react";
+import axios from 'axios';
+import { parseString } from "xml2js";
+
 import classes from "./TorrentContainer.module.css";
+import TorrentCard from "../TorrentCard/TorrentCard";
+import Spinner from "../UI/Spinner/Spinner";
 
 const TorrentContainer = (props) => {
-  const data = [
-    {
-      title: ["My Hero Academia - chapter 277-314 (Digital) (anadius)"],
-      link: ["https://nyaa.si/download/1392950.torrent"],
-      guid: [
-        {
-          _: "https://nyaa.si/view/1392950",
-          $: {
-            isPermaLink: "true",
-          },
-        },
-      ],
-      pubDate: ["Tue, 01 Jun 2021 08:51:52 -0000"],
-      "nyaa:seeders": ["17"],
-      "nyaa:leechers": ["3"],
-      "nyaa:downloads": ["40"],
-      "nyaa:infoHash": ["a04e8b5c18af1640bf432e2147f860268f1a7fc9"],
-      "nyaa:categoryId": ["3_1"],
-      "nyaa:category": ["Literature - English-translated"],
-      "nyaa:size": ["336.2 MiB"],
-      "nyaa:comments": ["2"],
-      "nyaa:trusted": ["No"],
-      "nyaa:remake": ["No"],
-      description: [
-        '<a href="https://nyaa.si/view/1392950">#1392950 | My Hero Academia - chapter 277-314 (Digital) (anadius)</a> | 336.2 MiB | Literature - English-translated | a04e8b5c18af1640bf432e2147f860268f1a7fc9',
-      ],
-    },
-    {
-      title: ["My Hero Academia - chapter 277-314 (Digital) (anadius)"],
-      link: ["https://nyaa.si/download/1392950.torrent"],
-      guid: [
-        {
-          _: "https://nyaa.si/view/1392950",
-          $: {
-            isPermaLink: "true",
-          },
-        },
-      ],
-      pubDate: ["Tue, 01 Jun 2021 08:51:52 -0000"],
-      "nyaa:seeders": ["17"],
-      "nyaa:leechers": ["3"],
-      "nyaa:downloads": ["40"],
-      "nyaa:infoHash": ["a04e8b5c18af1640bf432e2147f860268f1a7fc9"],
-      "nyaa:categoryId": ["3_3"],
-      "nyaa:category": ["Literature - English-translated"],
-      "nyaa:size": ["336.2 MiB"],
-      "nyaa:comments": ["2"],
-      "nyaa:trusted": ["Yes"],
-      "nyaa:remake": ["No"],
-      description: [
-        '<a href="https://nyaa.si/view/1392950">#1392950 | My Hero Academia - chapter 277-314 (Digital) (anadius)</a> | 336.2 MiB | Literature - English-translated | a04e8b5c18af1640bf432e2147f860268f1a7fc9',
-      ],
-    },
-  ];
+  const [torrentData,setTorrentData]=useState(null);
+  useEffect(() => {
+    const url = "";
+    axios
+      .get(url,{ "Content-Type": "application/xml; charset=utf-8",})
+      .then((response) => {
+        parseString(response.data, function (err, result) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          setTorrentData(result.rss.channel[0].item);
+        });
+      });
+  }, []);
+  let torrentCards=<Spinner />
+  if(torrentData){
+   torrentCards=torrentData.map(item=><TorrentCard key={item.title} data={item} /> )
+  }  
   return (
     <div className={classes.TorrentContainer}>
-      <TorrentCard data={data[0]} />
-      <TorrentCard data={data[1]} />
-
+      {torrentCards}
     </div>
   );
 };
