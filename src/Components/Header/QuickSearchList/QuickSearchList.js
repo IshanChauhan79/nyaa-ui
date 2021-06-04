@@ -7,7 +7,7 @@ const QuickSearchKeys = (props) => {
   const Sources = props.sourceList.map((item, i) => (
     <Card
       key={item}
-      clickedClass={props.sourceClicked === item}
+      clickedClass={props.sourceSelcted === item}
       clicked={props.clicked}
       onDelete={props.onDelete}
       delete={i > 2}

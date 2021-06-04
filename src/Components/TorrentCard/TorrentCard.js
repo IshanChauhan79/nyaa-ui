@@ -9,8 +9,10 @@ import c12 from "../../assests/images/category/1_2.png";
 import c13 from "../../assests/images/category/1_3.png";
 import c14 from "../../assests/images/category/1_4.png";
 import c21 from "../../assests/images/category/2_1.png";
+import c22 from "../../assests/images/category/2_2.png";
 import c31 from "../../assests/images/category/3_1.png";
 import c33 from "../../assests/images/category/3_3.png";
+import c44 from "../../assests/images/category/4_4.png";
 
 // magnet:?xt=urn:btih:6459bb5dc5e59eb28631eeb09d5965c17ee89822&dn=hello
 
@@ -51,11 +53,17 @@ const TorrentCard = (props) => {
     case "2_1":
       imgSrc = c21;
       break;
+    case "2_2":
+      imgSrc = c22;
+      break;
     case "3_1":
       imgSrc = c31;
       break;
     case "3_3":
       imgSrc = c33;
+      break;
+    case "4_4":
+      imgSrc = c44;
       break;
     default:
       break;
@@ -65,7 +73,7 @@ const TorrentCard = (props) => {
     <div className={classes.TorrentData}>
       <div className={classes.nyaaLink}>
         <a href={nyaaLink} target="_blank" rel="noreferrer">
-          <img src={nyaaImg} alt="Nyaa" height="40px"  />{" "}
+          <img src={nyaaImg} alt="Nyaa" height="40px" />{" "}
         </a>
       </div>
       <div className={classes.Title}>InfoHash: {infoHash}</div>

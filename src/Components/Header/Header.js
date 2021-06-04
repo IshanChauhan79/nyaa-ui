@@ -9,10 +9,16 @@ const Header = (props) => {
   return (
     <header className={classes.Header}>
       <div className={classes.TopHeaderBar}>
-        <Logo />
-        <Search />
+        <Logo logoClicked={props.logoClicked} />
+        <Search searchSubmit={props.searchSubmit} />
       </div>
-      <QuickSearch />
+      <QuickSearch
+        sourceSelcted={props.sourceSelcted}
+        sources={props.sources}
+        sourceClicked={props.sourceClicked}
+        addSource={props.addSource}
+        sourceDelete={props.sourceDelete}
+      />
     </header>
   );
 };
