@@ -2,9 +2,9 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #1a1a1b;
-  color: white;
-  z-index:10;
+  background-color: var(--dark-grey);
+  color: var(--white-color);
+  z-index: 10;
 }
 .TopHeaderBar {
   display: flex;

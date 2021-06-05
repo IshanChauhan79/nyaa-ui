@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardContainer from "../../UI/CardContainer/CardContainer";
 import Card from "../../UI/Card/Card";
 import classes from "./QuickSearchList.module.css";
+import TorrentContext from "../../../store/torrent-context";
 
 const QuickSearchKeys = (props) => {
-  const Sources = props.uploadersList.map((item, i) => (
+  const torrentCtx = useContext(TorrentContext);
+
+  const Sources = torrentCtx.uploaders.map((item, i) => (
     <Card
       key={item}
-      clickedClass={props.uploaderSelected === item}
-      clicked={props.clicked}
-      onDelete={props.onDelete}
+      clickedClass={torrentCtx.uploaderSelected === item}
+      clicked={torrentCtx.onUploaderClicked}
+      onDelete={torrentCtx.onUploaderDelete}
       delete={i > 2}
     >
       {item}

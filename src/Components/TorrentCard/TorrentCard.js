@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./TorrentCard.module.css";
-import dateTime from "../UI/getDate/getDate";
+import dateTime from "../../assests/js/getDate/getDate";
 import DownloadButton from "../UI/DownloadButton/DownloadButton";
 import ExpandButton from "../UI/ExpandButton/ExpandButton";
 
@@ -72,7 +72,6 @@ const TorrentCard = (props) => {
     default:
       break;
   }
-  
 
   const expandRow = expandCard ? (
     <div className={classes.TorrentData}>
@@ -94,7 +93,12 @@ const TorrentCard = (props) => {
     <div className={classes.TorrentCard}>
       <div className={titleRow.join(" ")}>
         <div>
-          <img src={imgSrc} alt="Anime" className={classes.Image} onClick={()=>props.sourceClicked(categoryId)}></img>
+          <img
+            src={imgSrc}
+            alt="Anime"
+            className={classes.Image}
+            onClick={() => props.sourceClicked(categoryId)}
+          ></img>
         </div>
         <div className={classes.Title}>{title}</div>
         <DownloadButton src={download} type="torrentFile" />

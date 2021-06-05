@@ -7,23 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   color: white;
-  font-size:16px;
+  font-size: 16px;
 }
-:root{
-  --white-color:white;
-  --blue-color:rgb(92, 170, 253);
-  --light-blue:lightblue;
-  --black-color:black;
-  --light-black:#717171;
-  --light-grey:#474747;
-  --dark-grey:#1a1a1b;
+:root {
+  --white-color: white;
+  --blue-color: rgb(92, 170, 253);
+  --dark-blue: rgb(52, 127, 207);
+  --black-color: black;
+  --light-black: #717171;
+  --light-grey: #474747;
+  --dark-grey: #1a1a1b;
   /* -- */
-  --grey-border:#38383a;
-  --torrent-green:#36482f;
-  --seeds-color:#069c40;
-  --leechers-color:#FF101E;
+  --grey-border: #38383a;
+  --torrent-green: #36482f;
+  --seeds-color: #069c40;
+  --leechers-color: #ff101e;
   /* --grey-color: */
-
 }
 
 * {
@@ -33,4 +32,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-

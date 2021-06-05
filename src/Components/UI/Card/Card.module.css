@@ -11,8 +11,8 @@
   background-color: var(--light-black);
   box-shadow: 0 0 6px 0px var(--light-black);
 }
- .CardText {
-  white-space: nowrap 
+.CardText {
+  white-space: nowrap;
 }
 /*
 .Delete {

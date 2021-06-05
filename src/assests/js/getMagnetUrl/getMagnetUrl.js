@@ -1,4 +1,3 @@
-
 const magnetUrl = (search, source, uploader) => {
   // axios.get("https://ishan1plus1-eval-prod.apigee.net/nyaa/"+"?f=0&c=1_2&q=golumpa+my+hero",{
   // axios.get("https://ishan1plus1-eval-prod.apigee.net/nyaa/"+"?f=0&c=1_2&q=golumpa",{
@@ -8,7 +7,7 @@ const magnetUrl = (search, source, uploader) => {
   let searchUrl = "";
   let uploaderUrl = "";
   let sourceUrl = "";
-  if(source==="" && uploader ==="" && search===""){
+  if (source === "" && uploader === "" && search === "") {
     return "";
   }
 
@@ -26,7 +25,7 @@ const magnetUrl = (search, source, uploader) => {
       finalParam = "q=" + uploaderUrl + "+" + searchUrl;
     } else if (uploaderUrl !== "") {
       finalParam = "q=" + uploaderUrl;
-    } else if(searchUrl!=="") {
+    } else if (searchUrl !== "") {
       finalParam = "q=" + searchUrl;
     }
 
@@ -38,11 +37,6 @@ const magnetUrl = (search, source, uploader) => {
       finalParam = "?" + finalParam;
       return finalParam;
     }
-
   }
-
-//   console.log(search, uploader, source);
-//   console.log(finalParam);
-//   return finalParam;
 };
 export default magnetUrl;

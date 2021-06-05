@@ -6,15 +6,7 @@ import Header from "../Header/Header";
 const Layout = (props) => {
   return (
     <div>
-      <Header
-        uploaderSelected={props.uploaderSelected}
-        uploaders={props.uploaders}
-        uploaderClicked={props.onUploaderClicked}
-        addUploader={props.onAddUploader}
-        uploaderDelete={props.onUploaderDelete}
-        logoClicked={props.onLogoClicked}
-        searchSubmit={props.onSearchSubmit}
-      />
+      <Header />
       {props.children}
     </div>
   );

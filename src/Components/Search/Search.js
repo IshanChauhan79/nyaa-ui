@@ -1,13 +1,15 @@
-import React, {  useRef } from "react";
+import React, { useContext, useRef } from "react";
 import classes from "./Search.module.css";
+import TorrentContext from "../../store/torrent-context";
 
-const Search = (props) => {
+const Search = () => {
   // const [searchInput, setSearch] = useState("");
   const inputRef = useRef();
+  const torrentCtx = useContext(TorrentContext);
 
   const searchSubmitHandler = (event) => {
     event.preventDefault();
-    props.searchSubmit(inputRef.current.value.trim());
+    torrentCtx.onSearchSubmit(inputRef.current.value.trim());
   };
 
   // const searchInputHandler =(event)=>{

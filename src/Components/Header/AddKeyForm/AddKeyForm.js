@@ -18,7 +18,7 @@ const AddKeyForm = (props) => {
   // console.log(keyValue);
   return (
     <div className={classes.AddKeyForm}>
-      <Backdrop clickHandler={props.backdropClickHandler}/>
+      <Backdrop clickHandler={props.backdropClickHandler} />
       <form className={classes.Form} onSubmit={onAddSubmitHandler}>
         <input
           type="text"

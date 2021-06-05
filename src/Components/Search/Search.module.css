@@ -1,39 +1,37 @@
-.Input{
-    display: inline-block;
-    background-color:transparent;
-    padding:7px 10px;
-    font-size: 14px;
-    color:var(--white-color);
-    width:170px;
-    border:0;
-    border: 1px solid var(--light-black);
-    border-left: 0px;
-    border-bottom-right-radius:0.4rem; 
-    border-top-right-radius:0.4rem; 
-    /* border-radius: 0.4rem; */
-    transition: all 0.2s ease-in-out;
-    
+.Input {
+  display: inline-block;
+  background-color: transparent;
+  padding: 7px 10px;
+  font-size: 14px;
+  color: var(--white-color);
+  width: 170px;
+  border: 0;
+  border: 1px solid var(--light-black);
+  border-left: 0px;
+  border-bottom-right-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  /* border-radius: 0.4rem; */
+  transition: all 0.2s ease-in-out;
 }
-.Input:focus{
-    outline:none;
-    background-color: var(--black-color);
-    box-shadow:  0 0 10px 0px var(--light-black);
+.Input:focus {
+  outline: none;
+  background-color: var(--black-color);
+  box-shadow: 0 0 10px 0px var(--light-black);
 }
-.SearchSubmit{
-    display: inline-block;
-    border:0px solid var(--light-black);
-    border-bottom-left-radius:0.4rem; 
-    border-top-left-radius:0.4rem; 
-    /* margin-right:5px; */
-    font-size: 16px;
-    padding:8px;
-    padding-bottom:10px;
-    /* background-image:url(https://developer.mozilla.org/static/media/search.db31d27c.svg); */
-    /* background-color: rgb(92, 170, 253); */
-    background-color: var(--blue-color);
-
+.SearchSubmit {
+  display: inline-block;
+  border: 0px solid var(--light-black);
+  border-bottom-left-radius: 0.4rem;
+  border-top-left-radius: 0.4rem;
+  /* margin-right:5px; */
+  font-size: 16px;
+  padding: 8px;
+  padding-bottom: 10px;
+  /* background-image:url(https://developer.mozilla.org/static/media/search.db31d27c.svg); */
+  /* background-color: rgb(92, 170, 253); */
+  background-color: var(--blue-color);
 }
 
-.SearchSubmit:hover{
-    background-color: var(--light-blue);
+.SearchSubmit:hover {
+  background-color: var(--dark-blue);
 }

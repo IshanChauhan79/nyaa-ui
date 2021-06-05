@@ -1,6 +1,6 @@
 .QuickSearch {
-  border-top: 1px solid #717171;
-  border-bottom: 1px solid #717171;
-  background-color: black;
+  border-top: 1px solid var(--light-black);
+  border-bottom: 1px solid var(--light-black);
+  background-color: var(--black-color);
   /* border:1px solid red; */
 }
