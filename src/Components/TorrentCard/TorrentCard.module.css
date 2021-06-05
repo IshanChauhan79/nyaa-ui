@@ -3,8 +3,8 @@
   /* padding: 10px; */
   width: 90%;
   /* height: 200px; */
-  background-color: #1a1a1b;
-  border: 1px solid #38383a;
+  background-color:var(--dark-grey) ;
+  border: 1px solid var(--grey-border) ;
   border-radius: 0.8rem;
   font-size: 14px;
   overflow:hidden;
@@ -33,18 +33,18 @@
 }
 .TitleRowTrusted {
   cursor:pointer;
-  color: rgb(92, 170, 253);
-  background-color: #36482f;
+  background-color:var(--torrent-green) ;
 }
 .TitleRow {
   cursor:pointer;
-  color: rgb(92, 170, 253);
-  background-color: #474747;
+  color: var(--blue-color);
+  background-color:var(--light-grey);
 }
+
 
 .Title {
   justify-content: left !important;
-  color: rgb(92, 170, 253);
+  color: var(--blue-color);
   flex-grow: 1;
   word-break: break-all;
 }
@@ -53,8 +53,8 @@
 .Tip {
   visibility: hidden;
   /* width: 100px; */
-  background-color: black;
-  color: #fff;
+  background-color: var(--black-color);
+  color:var(--white-color);
   text-align: center;
   padding: 5px 10px;;
   border-radius: 6px;
@@ -65,11 +65,11 @@
 }
 .Seeds{
   margin-left:45px !important;
- color:#069c40;
+ color:var(--seeds-color);
  position: relative;
 }
 .Leechers{
-  color:#FF101E;
+  color:var(--leechers-color);
   position: relative;
 }
 
@@ -81,10 +81,10 @@
 }
 .Size{
   white-space: nowrap;
-  color: rgb(92, 170, 253);
+  color: var(--blue-color);
 }
 .InfoHash {
-  color:white;
+  color:var(--white-color);
 }
 /* .Image{
    height:px; 

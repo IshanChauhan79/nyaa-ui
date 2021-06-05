@@ -1,60 +1,81 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Layout from "./Components/Layout/Layout";
 import TorrentContainer from "./Components/TorrentContainer/TorrentContainer";
 import classes from "./App.module.css";
 
 const App = () => {
-  const [urlParams, setUrlParams] = useState({ sourceSelcted: "", search: "" });
-  const [sources, setSources] = useState([
+  const [urlParams, setUrlParams] = useState({ uploaderSelected: "", search: "",sourceSelcted:"" });
+  const [uploaders, setUploaders] = useState([
     "Golumpa",
     "Erai-raws",
-    "SubsPlease",
-    "Judas"
+    "SubsPlease"
   ]);
+  console.log(urlParams.sourceSelcted)
+  useEffect(()=>{
+    if(localStorage.getItem("uploaderList")){
+      console.log(localStorage.getItem("uploaderList"))
+      setUploaders(prev=> prev.concat(localStorage.getItem("uploaderList").split(",")))
+    }
+    // else{
+      // console.log("null uploaderList")
+    // }
+    // console.log(localStorage.getItem("uploaderList"))
+  },[])
+  useEffect(()=>{
+    // console.log("local storage update")
+    let data=uploaders.slice(3);
+    localStorage.setItem('uploaderList',data)
+  },[uploaders])
   // const [sourceClicked, setSourceClicked] = useState("");
 
-  const onSourceClickHandler = (item) => {
-    if (urlParams.sourceSelcted === item) {
-      setUrlParams({ ...urlParams, sourceSelcted: "" });
+  const onUploaderClickedHandler = (uploader) => {
+    if (urlParams.uploaderSelected === uploader) {
+      setUrlParams({ ...urlParams, uploaderSelected: "" });
       return;
     }
-    setUrlParams({ ...urlParams, sourceSelcted: item });
+    setUrlParams({ ...urlParams, uploaderSelected: uploader });
   };
 
-  const onSourceDeleteHandler = (item) => {
-    if (urlParams.sourceSelcted === item) {
-      setUrlParams({ ...urlParams, sourceSelcted: "" });
+  const onUploaderDeleteHandler = (onUploaderClicked) => {
+    if (urlParams.uploaderSelected === onUploaderClicked) {
+      setUrlParams({ ...urlParams, uploaderSelected: "" });
     }
-    setSources(sources.filter((source) => source !== item));
+    setUploaders(uploaders.filter((uploader) => uploader !== onUploaderClicked));
+
   };
 
-  const onAddSourceHandler = (item) => {
-    !sources.includes(item) && setSources((prev) => [...prev, item]);
-    // console.log(!sources.includes(item))
+  const onAddUploaderHandler = (uploader) => {
+    !uploaders.includes(uploader) && setUploaders((prev) => [...prev, uploader]);
+  
   };
 
   const onSearchSubmitHandler = (search) => {
     setUrlParams({ ...urlParams, search: search });
   };
   const onLogoClickedHandler = () => {
-    setUrlParams({ sourceSelcted: "", search: "" });
+    setUrlParams({ uploaderSelected: "", search: "",sourceSelcted:"" });
   };
+  const onsourceClickedHandler =(source)=>{
+    setUrlParams({ ...urlParams ,sourceSelcted:source });
+  }
   // console.log(urlParams);
   return (
     <Layout
-      sourceSelcted={urlParams.sourceSelcted}
-      sources={sources}
-      onSourceClicked={onSourceClickHandler}
-      onAddSource={onAddSourceHandler}
-      onSourceDelete={onSourceDeleteHandler}
+      uploaderSelected={urlParams.uploaderSelected}
+      uploaders={uploaders}
+      onUploaderClicked={onUploaderClickedHandler}
+      onAddUploader={onAddUploaderHandler}
+      onUploaderDelete={onUploaderDeleteHandler}
       onLogoClicked={onLogoClickedHandler}
       onSearchSubmit={onSearchSubmitHandler}
     >
       <div className={classes.App}>
         <TorrentContainer 
-          uploader={urlParams.sourceSelcted}
+          uploader={urlParams.uploaderSelected}
           search={urlParams.search}
+          source={urlParams.sourceSelcted}
+          onsourceClicked={onsourceClickedHandler}
         />
       </div>
     </Layout>

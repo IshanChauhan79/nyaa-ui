@@ -5,34 +5,26 @@ import { parseString } from "xml2js";
 import classes from "./TorrentContainer.module.css";
 import TorrentCard from "../TorrentCard/TorrentCard";
 import Spinner from "../UI/Spinner/Spinner";
+import magnetUrl from '../UI/getMagnetUrl/getMagnetUrl';
 
 const TorrentContainer = (props) => {
   const [torrentData, setTorrentData] = useState(null);
   const [loading,setLoading]=useState(true);
+  const [errorMessage,setError]=useState(null);
+
   
   useEffect(() => {
     setLoading(true);
-    
-    let finalParam="";
-    let searchUrl="";
-    let uploaderUrl="";
-    if(props.search !== ""){
-      searchUrl=props.search.replace(" ","+");
-    }
-    if(props.uploader !==""){
-      uploaderUrl=props.uploader.replace(" ","+");
-    }
-    if (uploaderUrl!=="" && searchUrl !== ""){
-      finalParam="?q="+searchUrl+"+"+uploaderUrl;
-    }else if (uploaderUrl!==""){
-      finalParam="?q="+uploaderUrl;
-    }else if(searchUrl !== ""){
-      finalParam="?q="+searchUrl;
-    }
-    console.log(finalParam)
+    const url = "https://ishan1plus1-eval-prod.apigee.net/nyaa/";
+    let finalParam =magnetUrl(props.search,props.source,props.uploader)
     axios
       .get(url+finalParam, { "Content-Type": "application/xml; charset=utf-8" })
       .then((response) => {
+        if(response.status!==200){
+          setLoading(false)
+          setError(true);
+          return;
+        }
         parseString(response.data, function (err, result) {
           if (err) {
             console.log(err);
@@ -43,13 +35,15 @@ const TorrentContainer = (props) => {
         });
       })
       .catch((error) => {
+        setLoading(false);
+        setError(error.message);
         console.log(error);
       });
-  }, [props.search,props.uploader]);
+  }, [props.search,props.uploader,props.source]);
   let torrentCards=<Spinner />
   if (!loading && torrentData) {
     torrentCards = torrentData.map((item) => (
-      <TorrentCard key={item.title} data={item} />
+      <TorrentCard key={item.title} data={item} sourceClicked={props.onsourceClicked} />
     ));
   }
   return <div className={classes.TorrentContainer}>{torrentCards}</div>;

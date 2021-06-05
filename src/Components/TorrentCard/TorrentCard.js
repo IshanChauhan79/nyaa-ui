@@ -12,6 +12,7 @@ import c21 from "../../assests/images/category/2_1.png";
 import c22 from "../../assests/images/category/2_2.png";
 import c31 from "../../assests/images/category/3_1.png";
 import c33 from "../../assests/images/category/3_3.png";
+import c43 from "../../assests/images/category/4_3.png";
 import c44 from "../../assests/images/category/4_4.png";
 
 // magnet:?xt=urn:btih:6459bb5dc5e59eb28631eeb09d5965c17ee89822&dn=hello
@@ -62,12 +63,16 @@ const TorrentCard = (props) => {
     case "3_3":
       imgSrc = c33;
       break;
+    case "4_3":
+      imgSrc = c43;
+      break;
     case "4_4":
       imgSrc = c44;
       break;
     default:
       break;
   }
+  
 
   const expandRow = expandCard ? (
     <div className={classes.TorrentData}>
@@ -89,7 +94,7 @@ const TorrentCard = (props) => {
     <div className={classes.TorrentCard}>
       <div className={titleRow.join(" ")}>
         <div>
-          <img src={imgSrc} alt="Anime" className={classes.Image}></img>
+          <img src={imgSrc} alt="Anime" className={classes.Image} onClick={()=>props.sourceClicked(categoryId)}></img>
         </div>
         <div className={classes.Title}>{title}</div>
         <DownloadButton src={download} type="torrentFile" />

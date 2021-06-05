@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {  useRef } from "react";
 import classes from "./Search.module.css";
 
 const Search = (props) => {

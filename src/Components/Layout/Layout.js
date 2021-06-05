@@ -7,11 +7,11 @@ const Layout = (props) => {
   return (
     <div>
       <Header
-        sourceSelcted={props.sourceSelcted}
-        sources={props.sources}
-        sourceClicked={props.onSourceClicked}
-        addSource={props.onAddSource}
-        sourceDelete={props.onSourceDelete}
+        uploaderSelected={props.uploaderSelected}
+        uploaders={props.uploaders}
+        uploaderClicked={props.onUploaderClicked}
+        addUploader={props.onAddUploader}
+        uploaderDelete={props.onUploaderDelete}
         logoClicked={props.onLogoClicked}
         searchSubmit={props.onSearchSubmit}
       />

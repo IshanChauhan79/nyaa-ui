@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./AddKeyForm.module.css";
 
 const AddKeyForm = (props) => {
-  const [keyValue, setKeyValue] = useState(null);
+  // const [keyValue, setKeyValue] = useState(null);
   const inputRef = useRef();
   const onAddSubmitHandler = (event) => {
     event.preventDefault();
@@ -12,8 +12,8 @@ const AddKeyForm = (props) => {
       return;
     }
     props.closeBackdrop();
-    props.addSource(inputRef.current.value.trim());
-    setKeyValue(inputRef.current.value);
+    props.addUploader(inputRef.current.value.trim());
+    // setKeyValue(inputRef.current.value);
   };
   // console.log(keyValue);
   return (

@@ -14,13 +14,13 @@ const AddKeyButton = (props) => {
     ? ReactDOM.createPortal(
         <AddKeyForm
           backdropClickHandler={onAddHandler}
-          addSource={props.addSource}
+          addUploader={props.addUploader}
           closeBackdrop={() => setBackdropShow(false)}
         />,
         document.getElementById("addForm")
       )
     : null;
-  console.log(backdropShow);
+  // console.log(backdropShow);
   return (
     <div className={classes.AddKeyButton}>
       {addKeyForm}

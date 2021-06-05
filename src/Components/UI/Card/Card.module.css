@@ -1,15 +1,15 @@
 .Card {
   padding: 7px;
-  border: 1px solid #717171;
-  background-color: #1a1a1b;
+  border: 1px solid var(--light-black);
+  background-color: var(--dark-grey);
   border-radius: 0.6rem;
   margin: 10px 5px;
   cursor: pointer;
   display: flex;
 }
 .Clicked {
-  background-color: #717171;
-  box-shadow: 0 0 6px 0px #717171;
+  background-color: var(--light-black);
+  box-shadow: 0 0 6px 0px var(--light-black);
 }
  .CardText {
   white-space: nowrap 

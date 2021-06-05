@@ -10,7 +10,7 @@ const Card = (props) => {
     >
       <div
         style={{
-          paddingRight: props.delete ? "20px" : 0,
+          paddingRight: props.delete ? "15px" : 0,
         }}
         className={classes.CardText}
         onClick={() => props.clicked(props.children)}

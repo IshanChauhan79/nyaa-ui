@@ -9,6 +9,23 @@ body {
   color: white;
   font-size:16px;
 }
+:root{
+  --white-color:white;
+  --blue-color:rgb(92, 170, 253);
+  --light-blue:lightblue;
+  --black-color:black;
+  --light-black:#717171;
+  --light-grey:#474747;
+  --dark-grey:#1a1a1b;
+  /* -- */
+  --grey-border:#38383a;
+  --torrent-green:#36482f;
+  --seeds-color:#069c40;
+  --leechers-color:#FF101E;
+  /* --grey-color: */
+
+}
+
 * {
   box-sizing: border-box;
 }

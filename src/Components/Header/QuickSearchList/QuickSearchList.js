@@ -4,10 +4,10 @@ import Card from "../../UI/Card/Card";
 import classes from "./QuickSearchList.module.css";
 
 const QuickSearchKeys = (props) => {
-  const Sources = props.sourceList.map((item, i) => (
+  const Sources = props.uploadersList.map((item, i) => (
     <Card
       key={item}
-      clickedClass={props.sourceSelcted === item}
+      clickedClass={props.uploaderSelected === item}
       clicked={props.clicked}
       onDelete={props.onDelete}
       delete={i > 2}

@@ -13,11 +13,11 @@ const Header = (props) => {
         <Search searchSubmit={props.searchSubmit} />
       </div>
       <QuickSearch
-        sourceSelcted={props.sourceSelcted}
-        sources={props.sources}
-        sourceClicked={props.sourceClicked}
-        addSource={props.addSource}
-        sourceDelete={props.sourceDelete}
+        uploaderSelected={props.uploaderSelected}
+        uploaders={props.uploaders}
+        uploaderClicked={props.uploaderClicked}
+        addUploader={props.addUploader}
+        uploaderDelete={props.uploaderDelete}
       />
     </header>
   );
