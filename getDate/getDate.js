@@ -9,7 +9,7 @@ const dateTime = (dateString) => {
     " " +
     readDate.getUTCHours().toString() +
     ":" +
-    readDate.getUTCMinutes().toFixed(2).toString();
+    readDate.getUTCMinutes().toString();
   return FinalDate;
 };
 export default dateTime;

@@ -5,15 +5,7 @@ import DownloadButton from "../UI/DownloadButton/DownloadButton";
 import ExpandButton from "../UI/ExpandButton/ExpandButton";
 
 import nyaaImg from "../../assests/images/nyaa.png";
-import c12 from "../../assests/images/category/1_2.png";
-import c13 from "../../assests/images/category/1_3.png";
-import c14 from "../../assests/images/category/1_4.png";
-import c21 from "../../assests/images/category/2_1.png";
-import c22 from "../../assests/images/category/2_2.png";
-import c31 from "../../assests/images/category/3_1.png";
-import c33 from "../../assests/images/category/3_3.png";
-import c43 from "../../assests/images/category/4_3.png";
-import c44 from "../../assests/images/category/4_4.png";
+import SourceIamge from "../SourceImage/SourceImage";
 
 // magnet:?xt=urn:btih:6459bb5dc5e59eb28631eeb09d5965c17ee89822&dn=hello
 
@@ -40,39 +32,6 @@ const TorrentCard = (props) => {
   ];
   const magnetLink = "magnet:?xt=urn:btih:" + infoHash;
 
-  let imgSrc = null;
-  switch (categoryId) {
-    case "1_2":
-      imgSrc = c12;
-      break;
-    case "1_3":
-      imgSrc = c13;
-      break;
-    case "1_4":
-      imgSrc = c14;
-      break;
-    case "2_1":
-      imgSrc = c21;
-      break;
-    case "2_2":
-      imgSrc = c22;
-      break;
-    case "3_1":
-      imgSrc = c31;
-      break;
-    case "3_3":
-      imgSrc = c33;
-      break;
-    case "4_3":
-      imgSrc = c43;
-      break;
-    case "4_4":
-      imgSrc = c44;
-      break;
-    default:
-      break;
-  }
-
   const expandRow = expandCard ? (
     <div className={classes.TorrentData}>
       <div className={classes.nyaaLink}>
@@ -92,14 +51,10 @@ const TorrentCard = (props) => {
   return (
     <div className={classes.TorrentCard}>
       <div className={titleRow.join(" ")}>
-        <div>
-          <img
-            src={imgSrc}
-            alt="Anime"
-            className={classes.Image}
-            onClick={() => props.sourceClicked(categoryId)}
-          ></img>
-        </div>
+        <SourceIamge
+          categoryId={categoryId}
+          sourceClicked={props.sourceClicked}
+        />{" "}
         <div className={classes.Title}>{title}</div>
         <DownloadButton src={download} type="torrentFile" />
         <DownloadButton src={magnetLink} type="magnet" />
