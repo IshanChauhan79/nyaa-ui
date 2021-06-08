@@ -1,8 +1,24 @@
 import React from "react";
 import classes from "./SourceImage.module.css";
+import { useHistory, useLocation } from "react-router-dom";
 
 const SourceIamge = (props) => {
-  
+  const history = useHistory();
+  const location = useLocation();
+
+  const querParams = new URLSearchParams(location.search);
+  const search = querParams.get("search");
+
+  const onClickImage = () => {
+    // console.log(history);
+    history.push(`/?cat=${props.categoryId}`);
+    if (search === null) {
+      history.push(`/?cat=${props.categoryId}`);
+    } else {
+      history.push(`/?cat=${props.categoryId}&search=${search}`);
+    }
+  };
+
   const path = "/category/" + props.categoryId + ".png";
   return (
     <div>
@@ -10,7 +26,8 @@ const SourceIamge = (props) => {
         src={path}
         alt="Anime"
         className={classes.Image}
-        onClick={() => props.sourceClicked(props.categoryId)}
+        onClick={onClickImage}
+        // onClick={() => props.sourceClicked(props.categoryId)}
       ></img>
     </div>
   );

@@ -16,24 +16,21 @@ const TorrentContainer = (props) => {
     setLoading(true);
     const url = "";
     let finalParam = magnetUrl(props.search, props.source, props.uploader);
+    console.log(finalParam);
     axios
       .get(url + finalParam, {
         "Content-Type": "application/xml; charset=utf-8",
       })
       .then((response) => {
-        if (response.status !== 200) {
-          setLoading(false);
-          // setError(true);
-          return;
-        }
+        setLoading(true);
         parseString(response.data, function (err, result) {
           if (err) {
             console.log(err);
             return;
           }
           setTorrentData(result.rss.channel[0].item);
-          setLoading(false);
         });
+        setLoading(false);
       })
       .catch((error) => {
         setLoading(false);

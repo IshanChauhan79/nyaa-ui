@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 import TorrentContext from "./store/torrent-context";
 
@@ -17,7 +18,17 @@ const App = () => {
     "Erai-raws",
     "SubsPlease",
   ]);
-  console.log(urlParams.sourceSelcted);
+  // const history= useHistory();
+  const location = useLocation();
+
+  const querParams = new URLSearchParams(location.search);
+  const category = querParams.get("cat");
+  const searchParam = querParams.get("search");
+
+  console.log(searchParam);
+  console.log(category);
+
+  // console.log(urlParams.sourceSelcted);
   useEffect(() => {
     if (localStorage.getItem("uploaderList")) {
       console.log(localStorage.getItem("uploaderList"));
@@ -25,17 +36,21 @@ const App = () => {
         prev.concat(localStorage.getItem("uploaderList").split(","))
       );
     }
-    // else{
-    // console.log("null uploaderList")
-    // }
-    // console.log(localStorage.getItem("uploaderList"))
   }, []);
+  useEffect(() => {
+    setUrlParams((prev) => ({
+      ...prev,
+      sourceSelcted: category === null ? "" : category,
+      search: searchParam === null ? "" : searchParam,
+    }));
+    // }
+  }, [category, searchParam]);
+
   useEffect(() => {
     // console.log("local storage update")
     let data = uploaders.slice(3);
     localStorage.setItem("uploaderList", data);
   }, [uploaders]);
-  // const [sourceClicked, setSourceClicked] = useState("");
 
   const onUploaderClickedHandler = (uploader) => {
     if (urlParams.uploaderSelected === uploader) {
@@ -74,6 +89,7 @@ const App = () => {
       value={{
         uploaders: uploaders,
         uploaderSelected: urlParams.uploaderSelected,
+        search: urlParams.search,
         onUploaderClicked: onUploaderClickedHandler,
         onAddUploader: onAddUploaderHandler,
         onUploaderDelete: onUploaderDeleteHandler,
@@ -82,14 +98,22 @@ const App = () => {
       }}
     >
       <Layout>
-        <div className={classes.App}>
-          <TorrentContainer
-            uploader={urlParams.uploaderSelected}
-            search={urlParams.search}
-            source={urlParams.sourceSelcted}
-            onsourceClicked={onsourceClickedHandler}
-          />
-        </div>
+        <Switch>
+          <Route path="/" exact>
+            <div className={classes.App}>
+              <TorrentContainer
+                uploader={urlParams.uploaderSelected}
+                search={urlParams.search}
+                source={urlParams.sourceSelcted}
+                onsourceClicked={onsourceClickedHandler}
+              />
+            </div>
+          </Route>
+          <Route
+            path="/"
+            render={() => <h1 style={{ marginTop: "200px" }}>Not found</h1>}
+          ></Route>
+        </Switch>
       </Layout>
     </TorrentContext.Provider>
   );
