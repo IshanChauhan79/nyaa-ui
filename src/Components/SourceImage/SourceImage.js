@@ -19,7 +19,7 @@ const SourceIamge = (props) => {
     }
   };
 
-  const path = "/category/" + props.categoryId + ".png";
+  const path = "./category/" + props.categoryId + ".png";
   return (
     <div>
       <img
