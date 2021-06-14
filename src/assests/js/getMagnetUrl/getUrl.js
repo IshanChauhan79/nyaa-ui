@@ -1,4 +1,4 @@
-const magnetUrl = (search, source, uploader) => {
+const getUrl = (search, source, uploader) => {
   // axios.get("https://ishan1plus1-eval-prod.apigee.net/nyaa/"+"?f=0&c=1_2&q=golumpa+my+hero",{
   // axios.get("https://ishan1plus1-eval-prod.apigee.net/nyaa/"+"?f=0&c=1_2&q=golumpa",{
   // axios.get(url+"?c=1_2",{
@@ -39,4 +39,4 @@ const magnetUrl = (search, source, uploader) => {
     }
   }
 };
-export default magnetUrl;
+export default getUrl;

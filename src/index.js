@@ -1,18 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { TorrentContextProvider } from "./store/torrent-context";
+
+import App from "./App";
+
+import { BrowserRouter } from "react-router-dom";
+// import { TorrentContextProvider } from "./store/torrent-context";
+import { Provider } from "react-redux";
+import store from "./store/index";
+
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <TorrentContextProvider>
-        <App />
-      </TorrentContextProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* <TorrentContextProvider> */}
+          <App />
+        {/* </TorrentContextProvider> */}
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

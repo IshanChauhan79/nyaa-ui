@@ -1,24 +1,24 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Search.module.css";
-import TorrentContext from "../../store/torrent-context";
+import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Search = () => {
-  // const [searchInput, setSearch] = useState("");
   const inputRef = useRef();
-  const torrentCtx = useContext(TorrentContext);
   const history = useHistory();
   const location = useLocation();
+  const search = useSelector((state) => state.torrentSlice.search);
 
-  console.log(location);
+  // console.log(location);
   useEffect(() => {
-    inputRef.current.value = torrentCtx.search;
-  }, [torrentCtx.search]);
+    inputRef.current.value = search;
+  }, [search]);
   const querParams = new URLSearchParams(location.search);
   const category = querParams.get("cat");
 
   const searchSubmitHandler = (event) => {
     event.preventDefault();
+    // open the dynamic link for the searched value
     if (category === null) {
       history.push("/?search=" + inputRef.current.value.trim());
     } else {
@@ -30,9 +30,6 @@ const Search = () => {
     // torrentCtx.onSearchSubmit(inputRef.current.value.trim());
   };
 
-  // const searchInputHandler =(event)=>{
-  //   setSearch(event.target.value)
-  // }
   return (
     <div>
       <form onSubmit={searchSubmitHandler}>

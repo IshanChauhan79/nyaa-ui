@@ -1,46 +1,93 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { parseString } from "xml2js";
+import { torrentActions } from "../../store/torrent-slice";
+import { uiActions } from "../../store/ui-slice";
 
 import classes from "./TorrentContainer.module.css";
 import TorrentCard from "../TorrentCard/TorrentCard";
 import Spinner from "../UI/Spinner/Spinner";
-import magnetUrl from "../../assests/js/getMagnetUrl/getMagnetUrl";
+import ErrorHandler from "../UI/ErrorHandler/ErrorHandler";
+import getUrl from "../../assests/js/getMagnetUrl/getUrl";
 
 const TorrentContainer = (props) => {
-  const [torrentData, setTorrentData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  // const [errorMessage,setError]=useState(null);
+  const torrent = useSelector(state=>state.torrentSlice);
+  const ui = useSelector(state=>state.uiSlice);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
+    dispatch(uiActions.setLoading({isLoading:true}))
     const url = "";
-    let finalParam = magnetUrl(props.search, props.source, props.uploader);
-    console.log(finalParam);
+    let finalParam = getUrl(torrent.search, torrent.sourceSelected, torrent.uploaderSelected);
+    // console.log(finalParam);
     axios
       .get(url + finalParam, {
         "Content-Type": "application/xml; charset=utf-8",
       })
       .then((response) => {
-        setLoading(true);
         parseString(response.data, function (err, result) {
           if (err) {
             console.log(err);
             return;
           }
-          setTorrentData(result.rss.channel[0].item);
+          dispatch(torrentActions.updateTorrentData({torrentData:result.rss.channel[0].item}))
         });
-        setLoading(false);
+        dispatch(uiActions.setLoading({isLoading:false}))
       })
-      .catch((error) => {
-        setLoading(false);
-        // setError(error.message);
-        console.log(error);
+      .catch(() => {
+        dispatch(uiActions.setError({isError:true}))
       });
-  }, [props.search, props.uploader, props.source]);
+  }, [dispatch,torrent.search, torrent.sourceSelected, torrent.uploaderSelected]);
+
+
+
+
+
+
+  // const [torrentData, setTorrentData] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [errorMessage,setError]=useState(null);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const url = "https://ishan1plus1-eval-prod.apigee.net/nyaa/";
+  //   let finalParam = getUrl(torrent.search, torrent.sourceSelected, torrent.uploaderSelected);
+  //   // console.log(finalParam);
+  //   axios
+  //     .get(url + finalParam, {
+  //       "Content-Type": "application/xml; charset=utf-8",
+  //     })
+  //     .then((response) => {
+  //       if(!response.ok){
+  //         console.log('oh no');
+  //         setLoading(false)
+  //       }
+  //       setLoading(true);
+  //       parseString(response.data, function (err, result) {
+  //         if (err) {
+  //           console.log(err);
+  //           return;
+  //         }
+  //         setTorrentData(result.rss.channel[0].item);
+  //       });
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false);
+  //       // setError(error.message);
+  //       console.log(error);
+  //     });
+  // }, [torrent.search, torrent.sourceSelected, torrent.uploaderSelected]);
   let torrentCards = <Spinner />;
-  if (!loading && torrentData) {
-    torrentCards = torrentData.map((item) => (
+  if(ui.loading){
+    torrentCards=<Spinner />
+  }
+  if(ui.error){
+    torrentCards=<ErrorHandler />
+  }
+  if (!ui.loading && torrent.torrentData && !ui.error) {
+    torrentCards = torrent.torrentData.map((item) => (
       <TorrentCard
         key={item.title}
         data={item}

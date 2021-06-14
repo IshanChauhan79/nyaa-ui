@@ -1,26 +1,58 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import TorrentContext from "./store/torrent-context";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import TorrentContext from "./store/torrent-context";
+import { torrentActions } from "./store/torrent-slice";
 
 import Layout from "./Components/Layout/Layout";
 import TorrentContainer from "./Components/TorrentContainer/TorrentContainer";
+
 import classes from "./App.module.css";
 
 const App = () => {
-  const torrentCtx = useContext(TorrentContext);
+  const torrent = useSelector((state) => state.torrentSlice);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const querParams = new URLSearchParams(location.search);
+  const category = querParams.get("cat");
+  const searchParam = querParams.get("search");
+  console.log(torrent);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("uploaderList");
+
+    if (localData) {
+      // if local storage not null
+      //update uploaders list
+      dispatch(torrentActions.initUploaders({ data: localData.split(",") }));
+    }
+  }, [dispatch]);
+  useEffect(() => {
+    // console.log("local storage update")
+    let data = torrent.uploaders.slice(3);
+    // console.log(data)
+    localStorage.setItem("uploaderList", data);
+  }, [torrent.uploaders]);
+
+  useEffect(() => {
+    dispatch(
+      torrentActions.initTorrent({
+        search: searchParam === null ? "" : searchParam,
+        source: category === null ? "" : category,
+      })
+    );
+  }, [category, searchParam,dispatch]);
+
+  // const torrentCtx = useContext(TorrentContext);
 
   return (
     <Layout>
       <Switch>
         <Route path="/" exact>
           <div className={classes.App}>
-            <TorrentContainer
-              uploader={torrentCtx.urlParams.uploaderSelected}
-              search={torrentCtx.urlParams.search}
-              source={torrentCtx.urlParams.sourceSelcted}
-              onsourceClicked={torrentCtx.onsourceClickedHandler}
-            />
+            <TorrentContainer />
           </div>
         </Route>
         <Route

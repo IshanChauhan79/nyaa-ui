@@ -11,7 +11,7 @@ const SourceIamge = (props) => {
 
   const onClickImage = () => {
     // console.log(history);
-    history.push(`/?cat=${props.categoryId}`);
+    // history.push(`/?cat=${props.categoryId}`);
     if (search === null) {
       history.push(`/?cat=${props.categoryId}`);
     } else {

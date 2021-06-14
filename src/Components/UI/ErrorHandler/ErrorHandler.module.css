@@ -1,0 +1,19 @@
+.ErrorHandler{
+    position:absolute;
+    background-color:var( --black-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+}
+.ErrorHandler h2{
+    color:var(--white-color);
+}
+.ErrorHandler p{
+    color:var(--dark-blue);
+}

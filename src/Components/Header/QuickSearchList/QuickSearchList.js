@@ -1,18 +1,30 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { torrentActions } from "../../../store/torrent-slice";
+
 import CardContainer from "../../UI/CardContainer/CardContainer";
 import Card from "../../UI/Card/Card";
 import classes from "./QuickSearchList.module.css";
-import TorrentContext from "../../../store/torrent-context";
 
 const QuickSearchKeys = (props) => {
-  const torrentCtx = useContext(TorrentContext);
+  const dispatch = useDispatch();
+  const torrent = useSelector((state) => state.torrentSlice);
 
-  const Sources = torrentCtx.uploaders.map((item, i) => (
+  const onDeleteUploaderHandler = (uploaderClicked) => {
+    //delete  uploader
+    dispatch(torrentActions.deleteUploader({ uploader: uploaderClicked }));
+  };
+  const onClickUploaderHandler = (uploaderClicked) => {
+    //select uploader
+    dispatch(torrentActions.uploaderClicked({ uploader: uploaderClicked }));
+  };
+
+  const Sources = torrent.uploaders.map((item, i) => (
     <Card
       key={item}
-      clickedClass={torrentCtx.uploaderSelected === item}
-      clicked={torrentCtx.onUploaderClicked}
-      onDelete={torrentCtx.onUploaderDelete}
+      clickedClass={torrent.uploaderSelected === item}
+      clicked={onClickUploaderHandler}
+      onDelete={onDeleteUploaderHandler}
       delete={i > 2}
     >
       {item}

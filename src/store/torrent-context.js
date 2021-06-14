@@ -31,13 +31,13 @@ export const TorrentContextProvider = (props) => {
   const category = querParams.get("cat");
   const searchParam = querParams.get("search");
 
-  console.log(searchParam);
-  console.log(category);
+  // console.log(searchParam);
+  // console.log(category);
 
   // console.log(urlParams.sourceSelcted);
   useEffect(() => {
     if (localStorage.getItem("uploaderList")) {
-      console.log(localStorage.getItem("uploaderList"));
+      // console.log(localStorage.getItem("uploaderList"));
       setUploaders((prev) =>
         prev.concat(localStorage.getItem("uploaderList").split(","))
       );
