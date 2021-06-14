@@ -14,7 +14,7 @@ import "./index.css";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         {/* <TorrentContextProvider> */}
           <App />
         {/* </TorrentContextProvider> */}
