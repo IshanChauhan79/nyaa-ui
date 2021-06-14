@@ -18,7 +18,7 @@ const TorrentContainer = (props) => {
 
   useEffect(() => {
     dispatch(uiActions.setLoading({isLoading:true}))
-    const url = "";
+    const url = "https://ishan1plus1-eval-prod.apigee.net/nyaa/";
     let finalParam = getUrl(torrent.search, torrent.sourceSelected, torrent.uploaderSelected);
     // console.log(finalParam);
     axios
