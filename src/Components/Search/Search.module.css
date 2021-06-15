@@ -1,37 +1,44 @@
+.Search{
+  white-space: nowrap;
+}
 .Input {
   display: inline-block;
   background-color: transparent;
-  padding: 7px 10px;
-  font-size: 14px;
-  color: var(--white-color);
-  width: 170px;
-  border: 0;
-  border: 1px solid var(--light-black);
+  color: var(--clr-wb-100);
+  border: 1px solid var(--clr-wb-400);
+  font-size: 1.4rem;
+  padding: 0.5em 0.6em;
+  width: 12em;
   border-left: 0px;
-  border-bottom-right-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.5em;
   /* border-radius: 0.4rem; */
   transition: all 0.2s ease-in-out;
 }
 .Input:focus {
   outline: none;
-  background-color: var(--black-color);
-  box-shadow: 0 0 10px 0px var(--light-black);
+  background-color: var(--clr-wb-900);
+  box-shadow: 0 0 0.8em 0 var(--clr-wb-400);
 }
 .SearchSubmit {
   display: inline-block;
-  border: 0px solid var(--light-black);
-  border-bottom-left-radius: 0.4rem;
-  border-top-left-radius: 0.4rem;
+  background-color: var(--clr-blue-500);
+  border: 0px solid var(--clr-wb-400);
+  border-bottom-left-radius: 0.4em;
+  border-top-left-radius: 0.4em;
   /* margin-right:5px; */
-  font-size: 16px;
-  padding: 8px;
-  padding-bottom: 10px;
-  /* background-image:url(https://developer.mozilla.org/static/media/search.db31d27c.svg); */
-  /* background-color: rgb(92, 170, 253); */
-  background-color: var(--blue-color);
+  font-size: 1.6rem;
+  padding: 0.5em;
+  padding-bottom: 0.625em;
 }
 
 .SearchSubmit:hover {
-  background-color: var(--dark-blue);
+  background-color: var(--clr-blue-700);
+}
+
+@media (max-width:500px) {
+  .Input{
+    width:10em;
+  }
+  
 }

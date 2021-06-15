@@ -1,0 +1,28 @@
+.Tip {
+    visibility: hidden;
+    background-color: var(--clr-wb-900);
+    color: var(--clr-wb-100);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    position: absolute;
+    top: -3rem;
+    right: -1rem;
+    z-index: 1;
+  }
+  .Seeds {
+    /* margin-left: 45px !important; */
+    color: var(--clr-green-400);
+    position: relative;
+  }
+  .Leechers {
+    color: var(--clr-red-400);
+    position: relative;
+  }
+  
+  .Seeds:hover .Tip {
+    visibility: visible;
+  }
+  .Leechers:hover .Tip {
+    visibility: visible;
+  }

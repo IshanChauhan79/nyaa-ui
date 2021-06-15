@@ -26,12 +26,19 @@ const TorrentContainer = (props) => {
         "Content-Type": "application/xml; charset=utf-8",
       })
       .then((response) => {
+
         parseString(response.data, function (err, result) {
+          const data=result.rss.channel[0].item;
           if (err) {
             console.log(err);
             return;
           }
-          dispatch(torrentActions.updateTorrentData({torrentData:result.rss.channel[0].item}))
+          setTimeout(()=>{
+            if(!data){
+              dispatch(uiActions.setError({isError:true}))
+            }
+          },5000)
+          dispatch(torrentActions.updateTorrentData({torrentData:data}))
         });
         dispatch(uiActions.setLoading({isLoading:false}))
       })

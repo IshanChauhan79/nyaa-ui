@@ -1,0 +1,13 @@
+.ImgContainer{
+    margin:0.8rem 0.2rem !important;
+
+
+}
+.Image{
+    height:2.8rem;
+}
+@media (max-width:600px){
+    .Image{
+        height:2rem;
+    }
+}

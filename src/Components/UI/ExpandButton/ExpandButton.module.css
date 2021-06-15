@@ -1,4 +1,7 @@
 .Expand {
-  margin-left: 10px;
-  color: white;
+  margin-left: 1.3rem !important;
+  color: var(--clr-wb-100);
+}
+.Expand:hover {
+  color:var(--clr-wb-200)
 }

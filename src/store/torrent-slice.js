@@ -20,6 +20,9 @@ const torrentSlice = createSlice({
       state.uploaders = state.uploaders.concat(action.payload.data);
     },
     addUploader(state, action) {
+      if(state.uploaders.includes(action.payload.uploader)){
+        return ;
+      }
       state.uploaders = [...state.uploaders, action.payload.uploader];
     },
     uploaderClicked(state, action) {

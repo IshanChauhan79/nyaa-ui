@@ -5,18 +5,44 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
-  font-size: 16px;
+  background-color: var(--clr-wb-900);
+  color: var(--clr-wb-100);
+  font-size: 1.4rem;
+  min-width: 350px;
 }
 :root {
+  font-size: 62.5%;
+
+  /*---------------------------- color name with 100 is light -> 900 is dark --------------------------------------*/
+  /* white ------------------*/
+  --clr-wb-100: hsl(0, 0%, 100%);
+  /* black ---------------*/
+  --clr-wb-900: hsl(0, 0%, 0%);
+  --clr-wb-800:hsl(0, 0%, 8%);
+  --clr-wb-500:hsl(0, 0%, 30%);
+  --clr-wb-450:hsl(0, 0%, 37%);
+  --clr-wb-400:hsl(0, 0%, 45%);
+  --clr-wb-200:hsl(0, 0%, 80%);
+
+
+  /* Blue----------------- */
+  --clr-blue-700:hsl(203, 100%, 40%);
+  --clr-blue-500:hsl(203, 100%, 60%);
+  /* green--------------------------- */
+  --clr-green-700:hsl(103, 21%, 25%);
+  --clr-green-500:hsl(103, 21%, 40%);
+  --clr-green-400:hsl(143, 93%, 32%);
+  /*  red--------------------------- */
+  --clr-red-400:hsl(356, 100%, 53%);
+
+
   --white-color: white;
   --blue-color: rgb(92, 170, 253);
   --dark-blue: rgb(52, 127, 207);
   --black-color: black;
   --light-black: #717171;
   --light-grey: #474747;
-  --dark-grey: #1a1a1b;
+  --dark-grey: hsl(240, 2%, 10%);
   /* -- */
   --grey-border: #38383a;
   --torrent-green: #36482f;
@@ -32,3 +58,5 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* background-image:url(https://developer.mozilla.org/static/media/search.db31d27c.svg); */
+  /* background-color: rgb(253, 92, 92); */

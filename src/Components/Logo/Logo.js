@@ -11,7 +11,7 @@ const Logo = () => {
 
   return (
     <div className={classes.Logo} onClick={logoClicked}>
-      Nyaa
+      NyaaUi
     </div>
   );
 };

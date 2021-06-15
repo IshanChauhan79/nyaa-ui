@@ -19,9 +19,9 @@ const SourceIamge = (props) => {
     }
   };
 
-  const path = "./category/" + props.categoryId + ".png";
+  const path = "/nyaa-ui/category/" + props.categoryId + ".png";
   return (
-    <div>
+    <div className={classes.ImgContainer}>
       <img
         src={path}
         alt="Anime"

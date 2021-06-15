@@ -1,15 +1,20 @@
 .Header {
   position: fixed;
   top: 0;
-  width: 100%;
-  background-color: var(--dark-grey);
-  color: var(--white-color);
+  right: 0;
+  left: 0;
+  background-color: var(--clr-wb-800);
   z-index: 10;
+  min-width: 350px;
 }
 .TopHeaderBar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px 20px;
-  margin-right: 50px;
-  /* border:1px solid white; */
+  padding: 1em 2em 0.6em;
+}
+@media (max-width:450px) {
+  .TopHeaderBar{
+    padding:1em 1em 0.6em !important;
+  }
+  
 }

@@ -6,6 +6,7 @@ import ExpandButton from "../UI/ExpandButton/ExpandButton";
 
 import nyaaImg from "../../assests/images/nyaa.png";
 import SourceIamge from "../SourceImage/SourceImage";
+import SLCounter from '../UI/SLCounter/SLCounter';
 
 // magnet:?xt=urn:btih:6459bb5dc5e59eb28631eeb09d5965c17ee89822&dn=hello
 
@@ -65,20 +66,15 @@ const TorrentCard = (props) => {
       </div>
       <div className={classes.TorrentData}>
         <div className={classes.Date}>{dateTime(date)} </div>
-        <div className={classes.downloads}>
-          <i className="fas fa-download"></i>&nbsp; {downloads}
+        <div className={classes.Downloads}>
+          <i className="fas fa-download"></i>&nbsp;{downloads}
         </div>
 
         <div>
           <div className={classes.Size}>{size} </div>
-          <div className={classes.Seeds}>
-            {seeds}
-            <div className={classes.Tip}>Seeds</div>
-          </div>
-          <div className={classes.Leechers}>
-            {leechers}
-            <div className={classes.Tip}>Leechers</div>
-          </div>
+          <SLCounter seeds={seeds} />
+          <SLCounter leechers={leechers} />
+          
         </div>
       </div>
       {expandRow}

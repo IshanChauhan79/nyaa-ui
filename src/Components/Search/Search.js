@@ -18,12 +18,17 @@ const Search = () => {
 
   const searchSubmitHandler = (event) => {
     event.preventDefault();
+    const search=inputRef.current.value.trim()
     // open the dynamic link for the searched value
+    if(search===""){
+      inputRef.current.focus();
+      return;
+    }
     if (category === null) {
-      history.push("/?search=" + inputRef.current.value.trim());
+      history.push("/?search=" + search);
     } else {
       history.push(
-        "/?cat=" + category + "&search=" + inputRef.current.value.trim()
+        "/?cat=" + category + "&search=" + search
       );
     }
 
@@ -31,7 +36,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className={classes.Search}>
       <form onSubmit={searchSubmitHandler}>
         <button type="submit" className={classes.SearchSubmit}>
           <i className="fas fa-search"></i>

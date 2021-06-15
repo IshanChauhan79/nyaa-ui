@@ -1,12 +1,9 @@
 .TorrentCard {
-  margin: 10px;
-  /* padding: 10px; */
-  width: 90%;
-  /* height: 200px; */
-  background-color: var(--dark-grey);
-  border: 1px solid var(--grey-border);
+  margin: 1em 0;
+  width:95%;
+  background-color: var(--clr-wb-800);
+  border: 0.8px solid var(--clr-wb-500);
   border-radius: 0.8rem;
-  font-size: 14px;
   overflow: hidden;
 }
 .TorrentData {
@@ -15,72 +12,51 @@
   justify-content: space-between;
   border-bottom-left-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
-
-  /* border-radius: 0.4rem; */
 }
 
 .TorrentData > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  margin: 0.8rem 0.8rem;
 }
 
 .TorrentData > div > div {
-  margin-left: 15px;
+  margin-left: 1rem ;
 }
 .TitleRowTrusted {
   cursor: pointer;
-  background-color: var(--torrent-green);
+  background-color: var(--clr-green-700);
+}
+.TitleRowTrusted:hover{
+  background-color: var(--clr-green-500);
 }
 .TitleRow {
   cursor: pointer;
-  color: var(--blue-color);
-  background-color: var(--light-grey);
+  color: var(--clr-blue-500);
+  background-color: var(--clr-wb-500);
+}
+.TitleRow:hover{
+  background-color: var(--clr-wb-450);
 }
 
 .Title {
+  margin:0.8rem 0.2rem !important;
   justify-content: left !important;
-  color: var(--blue-color);
+  color: var(--clr-blue-500);
   flex-grow: 1;
   word-break: break-all;
 }
-
-.Tip {
-  visibility: hidden;
-  /* width: 100px; */
-  background-color: var(--black-color);
-  color: var(--white-color);
-  text-align: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  position: absolute;
-  top: -30px;
-  right: -10px;
-  z-index: 1;
-}
-.Seeds {
-  margin-left: 45px !important;
-  color: var(--seeds-color);
-  position: relative;
-}
-.Leechers {
-  color: var(--leechers-color);
-  position: relative;
+.Downloads{
+  white-space: nowrap;
 }
 
-.Seeds:hover .Tip {
-  visibility: visible;
-}
-.Leechers:hover .Tip {
-  visibility: visible;
-}
 .Size {
   white-space: nowrap;
-  color: var(--blue-color);
+  color: var(--clr-blue-500);
 }
 .InfoHash {
-  color: var(--white-color);
+  color: var(--clr-wb-100);
 }
 /* .Image{
    height:px; 

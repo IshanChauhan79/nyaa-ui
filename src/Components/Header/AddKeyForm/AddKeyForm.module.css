@@ -1,57 +1,50 @@
 .AddKeyForm {
   position: fixed;
-  /* top: 0;
-    left: 0; */
   width: 100%;
   height: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100 !important;
+  z-index: 20 !important;
 }
 .Form {
-  /* border:1px solid blue; */
   top: 0;
   left: 0;
-  padding: 25px;
-  border-radius: 0.8rem;
-  background-color: var(--dark-grey);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background-color: var(--clr-wb-800);
   z-index: 100 !important;
 }
 .AddInput {
-  z-index: 100 !important;
   display: block;
   background-color: transparent;
-  width: 200px;
-  padding: 5px;
-  margin-bottom: 20px;
-  font-size: 20px;
-  color: var(--light-grey);
+  width: 10em;
+  padding: 0.25em;
+  margin-bottom: 1em;
+  font-size: 2rem;
+  color: var(--clr-wb-400);
   border: 0;
   border-bottom: 1px solid var(--black-color);
 }
 .AddInput::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--black-color);
-  opacity: 1;
+  color: var(--clr-wb-500);
 }
 .AddInput:focus {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
   outline: none;
 }
 
 .AddSource {
   display: block;
   margin: auto;
-  background-color: var(--blue-color);
-  padding: 8px;
-  color: var(--dark-grey);
+  background-color: var(--clr-blue-500);
+  padding: 0.5em;
+  color: var(--clr-wb-100);
   font-weight: 600;
   border: 0;
   border-radius: 0.2rem;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .AddSource:hover {
-  background-color: var(--dark-blue);
+  background-color: var(--clr-blue-700);
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import classes from "./Header.module.css";
+
 import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 import QuickSearch from "./QuickSearch/QuickSearch";
 
-import classes from "./Header.module.css";
 
 const Header = (props) => {
   return (
